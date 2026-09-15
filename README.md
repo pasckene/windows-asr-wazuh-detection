@@ -10,26 +10,6 @@ This project demonstrates how **Microsoft Defender Attack Surface Reduction (ASR
 
 The objective is not simply to generate alerts. The lab follows an **attack → prevention → telemetry → detection → investigation** workflow.
 
-The lab follows:
-
-```text
-Attack
-  ↓
-Defender ASR
-  ↓
-Windows Telemetry
-  ↓
-Wazuh Agent
-  ↓
-Wazuh Manager
-  ↓
-Custom Detection Rule
-  ↓
-MITRE ATT&CK Mapping
-  ↓
-SOC Investigation
-```
-
 ---
 
 # Lab Architecture
@@ -357,10 +337,6 @@ new detection logic
 ```
 
 
-Capture the completed configuration:
-
-images/wazuh-rules.png
-
 Attack Validation
 
 
@@ -390,16 +366,16 @@ Invoke-CimMethod `
 
 **Expected outcome:** Defender generates an ASR event and Wazuh generates a corresponding alert.
 
-### 📸 Evidence — Attack Execution && Microsoft Defender Block
+### Attack Execution && Microsoft Defender Block
 
 ![WMI Attack Execution](images/wmi-attack-defender.png)
 
 
-### 📸 Evidence — Wazuh Alert
+### Wazuh Alert
 
 ![Wazuh WMI Detection](images/wmi-wazuh.png)
 
-### 📸 Evidence — MITRE Mapping
+### MITRE Mapping
 
 ![WMI MITRE Mapping](images/wmi-mitre.png)
 ---
@@ -449,7 +425,7 @@ Write-Host "WMI persistence test created."
 
 **T1546.003 — Event Triggered Execution: Windows Management Instrumentation Event Subscription**
 
-### 📸 Attack Execution &&  Defender Evidence
+### Attack Execution &&  Defender Evidence
 
 
 ![WMI Persistence Test](images/wmi-persistence-attack.png)
@@ -460,7 +436,7 @@ Controlled WMI persistence test executed in the laboratory environment.
 Microsoft Defender telemetry associated with the WMI persistence attempt.
 
 
-### 📸 Wazuh Evidence
+### Wazuh Evidence
 
 ![WMI Persistence Wazuh Alert](images/wmi-persistence-wazuh.png)
 
@@ -497,7 +473,7 @@ Start-Process "$env:TEMP\svchost_fake.exe"
 
 **T1036.003 — Masquerading: Rename System Utilities**
 
-### 📸 Attack Execution && Defender Event 
+### Attack Execution && Defender Event 
 
 
 ![Masquerading Test](images/masquerading-attack.png)
@@ -506,7 +482,7 @@ Caption:
 Controlled renamed-system-binary test.
 
 
-### 📸 Wazuh Alert
+### Wazuh Alert
 
 ![Masquerading Wazuh Alert](images/masquerading-wazuh.png)
 
@@ -543,7 +519,7 @@ Add-MpPreference -AttackSurfaceReductionRules_Ids "3b576869-a4ec-4529-8536-b80a7
 
 **T1562.001 — Impair Defenses: Disable or Modify Tools**
 
-### 📸 Configuration Change
+### Configuration Change
 
 
 ![ASR Configuration Change](images/asr-tampering.png)
@@ -552,7 +528,7 @@ Caption:
 Controlled ASR configuration modification used to validate defense-evasion detection.
 
 
-### 📸 Wazuh Alert
+### Wazuh Alert
 
 ![Wazuh ASR Tampering Alert](images/asr-tampering-wazuh.png)
 
@@ -572,31 +548,7 @@ Wazuh detecting the Defender configuration change.
 
 ---
 
-# Evidence Gallery
 
-### Attack Activity
-
-```text
-![Attack Activity](images/attack-overview.png)
-```
-
-### Microsoft Defender
-
-```text
-![Microsoft Defender ASR](images/defender-overview.png)
-```
-
-### Wazuh Detection
-
-```text
-![Wazuh Dashboard](images/wazuh-overview.png)
-```
-
-### MITRE ATT&CK Mapping
-
-```text
-![MITRE ATT&CK Mapping](images/mitre-overview.png)
-```
 
 ---
 
